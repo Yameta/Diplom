@@ -16,47 +16,42 @@ videos.forEach(video => {
     video.pause();
   });
 });
+const header = document.getElementById('site-header');
+const burger = document.querySelector('.burger__container');
 
-var myHeader = document.getElementById("site-header");
-var prevScrollpos = window.pageYOffset;
-var isMenuOpen = false;
+let lastScrollPosition = 0;
 
-window.addEventListener("scroll", function() {
-  var currentScrollPos = window.pageYOffset;
-  
-  if (!isMenuOpen && prevScrollpos > currentScrollPos) {
-    myHeader.style.top = "0";
-    console.log("Header shown");
+window.addEventListener('scroll', () => {
+  // Получаем текущую позицию скролла
+  const currentScrollPosition = window.pageYOffset;
+
+  // Скрываем или показываем header в зависимости от направления скролла
+  if (currentScrollPosition > lastScrollPosition && !BurgerOpen.classList.contains('menu-open')) {
+    header.classList.remove('show');
+    header.classList.add('hide');
   } else {
-    myHeader.style.top = "-100px";
-    console.log("Header hidden");
+    header.classList.add('show');
+    header.classList.remove('hide');
   }
-  
 
-  
-  prevScrollpos = currentScrollPos;
+  // Обновляем значение lastScrollPosition
+  lastScrollPosition = currentScrollPosition;
 });
 
+// Делаем header видимым при первоначальной загрузке страницы
+header.classList.add('show');
 
-
-var burgerBtn = document.querySelector('.burger');
-burgerBtn.addEventListener("click", function() {
-  isMenuOpen = !isMenuOpen;
-  document.body.classList.toggle('menu-open');
+// Не даем скрываться header при клике на burger
+burger.addEventListener('click', () => {
+  burger.classList.add('cursor-active');
 });
 
-
-
-// Burger.addEventListener('click', () => {
-//     headerBackground.classList.toggle('background');
-//     Burger.classList.toggle('menu-open');
-//     BurgerOpen.classList.toggle('menu-open');
-//     // BurgerOpen.classList.toggle('burger__active__container');
-//     BurgerOpen.style.display = 'block';
-//     // BurgerOpen.style.justifyContent = 'space-between';
-//     // BurgerOpen.style.flexDirection = 'column';
-    
-// });
+// Скрываем cursor-active при клике где-либо на странице
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.burger__container')) {
+    burger.classList.remove('cursor-active');
+  }
+});
 
 Burger.addEventListener('click', () => {
   headerBackground.classList.toggle('background');
@@ -66,15 +61,28 @@ Burger.addEventListener('click', () => {
   BurgerOpen.style.display = 'block';
   // BurgerOpen.style.justifyContent = 'space-between';
   // BurgerOpen.style.flexDirection = 'column';
-  
-  // Добавляем обнуление переменной isMenuOpen
-  if (!Burger.classList.contains('menu-open')) {
-      isMenuOpen = false;
-  }
 });
 
+// const textBlock = document.querySelector('.conclusion__text');
+// const handle = document.querySelector('.conclusion__text::-webkit-scrollbar-thumb');
 
+// textBlock.addEventListener('scroll', () => {
+//   const scrollPercentage = (textBlock.scrollTop + textBlock.clientHeight) / textBlock.scrollHeight * 100;
+  
+//   /* Если процент прокрутки меньше 50%, устанавливаем красный цвет для handle */
+//   if (scrollPercentage < 50) {
+//     handle.style.backgroundColor = '#FF0000';
+//   } else {
+//     handle.style.backgroundColor = '#0000FF';
+//   }
+// });
+const content = document.querySelector('.conclusion__text');
 
+function setScrollColor() {
+  const scrollTop = content.scrollTop; // Позиция скролла сверху
+}
+
+content.addEventListener('scroll', setScrollColor); // Добавляем обработчик события при прокрутке
 
 
 

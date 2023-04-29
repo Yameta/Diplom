@@ -48,7 +48,7 @@ pointer-events: auto;
 }
 header.show{
   pointer-events: auto;
-  padding: 15px 0;
+  padding: 50px 0;
   background-color: var(--white-color);
 }
 .container a{
@@ -617,10 +617,13 @@ width: auto;
   max-width: 1720px;
 }
 .form__container{
+  position: relative;
 max-width: 1720px;
 padding-top: 210px;
 display: flex;
 margin: 0 auto;
+align-items: flex-start;
+justify-content: space-between;
 }
 .form__title span{
 color: var(--red-color);
@@ -644,7 +647,7 @@ color: var(--red-color);
 transition: all 0.2s;
 }
 .form__contact{
-margin-top: 50px;
+width: 50%;
 }
 .form__contact_icon__location{
 border: 1px solid #E12A2E;
@@ -654,19 +657,112 @@ background-color: var(--red-color);
 header.hide{
 top:-100%;
 }
-#myHeader {
-  position: fixed;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: blue;
-  color: white;
-  text-align: center;
-  line-height: 100px;
-  transition: top 0.5s ease-in-out;
+.form__contact a:first-of-type{
+  margin-top: 50px;
 }
-
 body.menu-open #myHeader {
   top: 0;
+}
+.form__contact{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.conclusion__text{
+display: flex;
+flex-direction: column;
+position: relative;
+width: 50%;
+overflow: auto;
+min-height: 400px;
+}
+.conclusion__text p{
+font-size: 1em;
+font-weight: 300;
+color: var(--text-color);
+margin-bottom: 24px;
+line-height: 1.5;
+}
+.conclusion__text ul{
+  list-style-position: outside;
+  margin-bottom: 25px;
+  position: relative;
+}
+.conclusion__text ul li{
+position: relative;
+margin-bottom: 10px;
+padding-left: 15px;
+font-size: 1em;
+font-weight: 300;
+line-height: 1.2;
+}
+.conclusion__text ul li::before{
+  content: "";
+  top: 8px;
+  left: 0;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--red-color);
+}
+.conclusion__text h1{
+margin-bottom: 10px;
+font-size:1.875em;
+font-weight: 800;
+}
+.conclusion__text {
+  min-height: 400px; /* задаем максимальную высоту блока */
+  overflow-y: scroll; /* добавляем вертикальную прокрутку */
+  padding-right: 15px; /* добавляем отступ справа для компенсации ширины полосы прокрутки */
+}
+
+/* Стили для полосы прокрутки */
+.conclusion__text::-webkit-scrollbar {
+  width: 6px; /* задаем ширину полосы */
+}
+
+/* Стили для трека полосы прокрутки */
+.conclusion__text::-webkit-scrollbar-track {
+  background-color: #F7F7F7; /* цвет фона трека */
+}
+/* Стили для handle полосы прокрутки */
+.conclusion__text::-webkit-scrollbar-thumb {
+  background-color: #E12A2E; /* цвет handle */
+  border-radius: 1rem; /* радиус закругления */
+}
+.conclusion__text{
+  height: 565px;
+  padding-top: 20px;
+  scrollbar-color:var(--red-color) var(--white-color);
+  scrollbar-gutter: auto;
+  scrollbar-width: thin;
+}
+.button{
+width: 541px;
+height: 80px;
+background-color: var(--red-color);
+color: var(--white-color);
+font-size:1.25em;
+font-weight: 300;
+margin-top: 30px;
+border: 0;
+}
+footer{
+margin-top: 120px;
+}
+.footer__container{
+display: flex;
+justify-content: space-between;
+max-width: 1720px;
+margin: 0 auto;
+padding-top: 50px;
+padding-bottom: 50px;
+border-top: 1px solid #a7a7a738;
+align-items: center;
+}
+.footer__container p{
+  font-size: 1.25em;
+  font-weight: 400;
+  color: var(--gray-color);
 }
