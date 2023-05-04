@@ -997,8 +997,6 @@ height: 50px;
   border: none;
   cursor: pointer;
 }
-.close-button svg{
-}
 .modal__close{
   position: absolute;
   right: 0;
