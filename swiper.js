@@ -14,14 +14,16 @@ const swiper = new Swiper('.swiper', {
     // pagination: {
     //   el: '.swiper-pagination',
     // },
-      
     // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    grabCursor: true,
+    allowTouchMove: true,
     // And if we need scrollbar
     // scrollbar: {
     //   el: '.swiper-scrollbar',
     // },
-  });   
+    
+  });
