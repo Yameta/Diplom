@@ -18,17 +18,17 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', 'light');
   }
 });
-const body = document.querySelector('body');
+// const body = document.querySelector('body');
   
-function toggleTheme() {
-  html.classList.toggle('light-theme');
-  html.classList.toggle('dark-theme');
+// function toggleTheme() {
+//   html.classList.toggle('light-theme');
+//   html.classList.toggle('dark-theme');
   
-  if (html.classList.contains('light-theme')) {
-    swiper.slideTo(0);
-  } else {
-    swiper.slideTo(1);
-  }
-}
+//   if (html.classList.contains('light-theme')) {
+//     swiper.slideTo(0);
+//   } else {
+//     swiper.slideTo(1);
+//   }
+// }
 
-toggleTheme();
+// toggleTheme();
