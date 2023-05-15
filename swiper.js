@@ -9,7 +9,9 @@ const swiper = new Swiper('.swiper', {
         direction: 'reverse'
       },
       slidesPerView:5,
+      slidesPerGroup:1,
       setTranslate:-344,
+      activeIndex:-5,
     // If we need pagination
     // pagination: {
     //   el: '.swiper-pagination',

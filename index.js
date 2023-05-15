@@ -33,25 +33,15 @@ window.addEventListener('scroll', () => {
     header.classList.add('show');
     header.classList.remove('hide');
   }
-
+  if (window.scrollY === 0) {
+    header.classList.remove('show');
+}
   // Обновляем значение lastScrollPosition
   lastScrollPosition = currentScrollPosition;
 });
 
 // Делаем header видимым при первоначальной загрузке страницы
 header.classList.add('show');
-
-// // Не даем скрываться header при клике на burger
-// burger.addEventListener('click', () => {
-//   burger.classList.add('cursor-active');
-// });
-
-// // Скрываем cursor-active при клике где-либо на странице
-// document.addEventListener('click', (event) => {
-//   if (!event.target.closest('.burger__container')) {
-//     burger.classList.remove('cursor-active');
-//   }
-// });
 
 Burger.addEventListener('click', () => {
   headerBackground.classList.toggle('background');
@@ -79,11 +69,14 @@ Burger.addEventListener('click', () => {
 function openModal() {
   document.getElementById("overlay").style.display = "block";
   document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.getElementById("overlay").style.position = "fixed";
 }
 
 function closeModal() {
   document.getElementById("overlay").style.display = "none";
   document.body.style.overflow = "auto";
+  document.body.style.position = "";
 }
 
 // Закрывать модальное окно при нажатии на Esc
@@ -102,14 +95,13 @@ document.getElementById("overlay").addEventListener("click", function (event) {
   }
 });
 
-const content = document.querySelector('.conclusion__text');
+// const content = document.querySelector('.conclusion__text');
 
-function setScrollColor() {
-  const scrollTop = content.scrollTop; // Позиция скролла сверху
-}
+// function setScrollColor() {
+//   const scrollTop = content.scrollTop; // Позиция скролла сверху
+// }
 
-content.addEventListener('scroll', setScrollColor); // Добавляем обработчик события при прокрутке
-
+// content.addEventListener('scroll', setScrollColor); // Добавляем обработчик события при прокрутке
 
 // Вернуться на начало страницы
 const backToTop = document.querySelector('.back-to-top');
@@ -211,3 +203,45 @@ mainButton.addEventListener('click', function() {
 
 // document.getElementById("breadcrumbs").innerHTML = breadcrumb;
 
+// FAQ
+const questions = document.querySelectorAll('.question');
+
+questions.forEach(question => {
+  const toggle = question.querySelector('.toggle');
+  const answer = question.nextElementSibling;
+  
+  question.addEventListener('click', () => {
+    answer.classList.toggle('show');
+    question.classList.toggle('open');
+    if (answer.classList.contains('show')) {
+      toggle.textContent = '-';
+    } else {
+      toggle.textContent = '+';
+    }
+  });
+});
+
+// blog active link
+// Получаем ссылки и добавляем обработчик клика
+const links = document.querySelectorAll('.blog__links a');
+links.forEach(link => {
+  link.addEventListener('click', function() {
+    // Добавляем класс "active" на кликнутую ссылку
+    links.forEach(link => link.classList.remove('active'));
+    this.classList.add('active');
+    // Сохраняем состояние в localStorage
+    localStorage.setItem('activeLink', this.href);
+  });
+});
+
+// При загрузке страницы проверяем, есть ли сохраненный класс "active"
+const activeLink = localStorage.getItem('activeLink');
+if (activeLink) {
+  links.forEach(link => {
+    if (link.href === activeLink) {
+      link.classList.add('active');
+    }
+  });
+}
+// modal scroll
+// Получаем элементы модального окна и body
